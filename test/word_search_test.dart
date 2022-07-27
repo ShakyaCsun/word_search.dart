@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:test/test.dart';
-
-import '../lib/word_search.dart';
+import 'package:word_search/word_search.dart';
 
 void main() {
   test('should create error on empty word list', () {
@@ -101,7 +100,8 @@ void main() {
       ['hello', 'world'],
       WSSettings(),
     );
-    WSSolved solved = wordSearch.solvePuzzle(newPuzzle.puzzle, ['hello', 'world', 'test']);
+    WSSolved solved =
+        wordSearch.solvePuzzle(newPuzzle.puzzle!, ['hello', 'world', 'test']);
     expect(solved.found.length, equals(2));
     expect(solved.notFound.length, equals(1));
   });
