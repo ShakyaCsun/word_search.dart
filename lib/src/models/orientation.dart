@@ -75,7 +75,7 @@ extension WSOrientationExtensions on WSOrientation {
     switch (this) {
       case WSOrientation.horizontal:
         return (int x, int y, int l) {
-          return WSPosition(x: 0, y: y + 1);
+          return WSPosition(y: y + 1);
         };
       case WSOrientation.horizontalBack:
         return (int x, int y, int l) {
@@ -83,15 +83,15 @@ extension WSOrientationExtensions on WSOrientation {
         };
       case WSOrientation.vertical:
         return (int x, int y, int l) {
-          return WSPosition(x: 0, y: y + 100);
+          return WSPosition(y: y + 100);
         };
       case WSOrientation.verticalUp:
         return (int x, int y, int l) {
-          return WSPosition(x: 0, y: l - 1);
+          return WSPosition(y: l - 1);
         };
       case WSOrientation.diagonal:
         return (int x, int y, int l) {
-          return WSPosition(x: 0, y: y + 1);
+          return WSPosition(y: y + 1);
         };
       case WSOrientation.diagonalBack:
         return (int x, int y, int l) {
@@ -99,7 +99,7 @@ extension WSOrientationExtensions on WSOrientation {
         };
       case WSOrientation.diagonalUp:
         return (int x, int y, int l) {
-          return WSPosition(x: 0, y: y < l - 1 ? l - 1 : y + 1);
+          return WSPosition(y: y < l - 1 ? l - 1 : y + 1);
         };
       case WSOrientation.diagonalUpBack:
         return (int x, int y, int l) {
@@ -109,7 +109,8 @@ extension WSOrientationExtensions on WSOrientation {
   }
 
   /// Determines if an orientation is possible given the starting square (x,y),
-  /// the height (h) and width (w) of the puzzle, and the length of the word (l).
+  /// the height (h) and width (w) of the puzzle,
+  /// and the length of the word (l).
   /// Returns true if the word will fit starting at the square provided using
   /// the specified orientation.
   WSCheckOrientationFn get checkOrientationFunction {

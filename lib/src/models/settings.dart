@@ -2,6 +2,17 @@ import 'package:word_search/word_search.dart';
 
 /// The puzzle settings intetface
 class WSSettings {
+  WSSettings({
+    this.width = 0,
+    this.height = 0,
+    this.orientations = WSOrientation.values,
+    this.fillBlanks,
+    this.allowExtraBlanks = true,
+    this.maxAttempts = 3,
+    this.maxGridGrowth = 10,
+    this.preferOverlap = true,
+  });
+
   /// The recommended height of the puzzle
   ///
   /// **Note:** This will automatically increment if
@@ -48,15 +59,4 @@ class WSSettings {
 
   /// Allow overlaping of words in the puzzle
   final bool preferOverlap;
-
-  WSSettings({
-    this.width = 0,
-    this.height = 0,
-    this.orientations = WSOrientation.values,
-    this.fillBlanks,
-    this.allowExtraBlanks = true,
-    this.maxAttempts = 3,
-    this.maxGridGrowth = 10,
-    this.preferOverlap = true,
-  });
 }

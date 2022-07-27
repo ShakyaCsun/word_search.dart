@@ -2,10 +2,20 @@ import 'package:word_search/word_search.dart';
 
 /// Word location interface
 class WSLocation implements WSPosition {
+  WSLocation({
+    required this.x,
+    required this.y,
+    this.orientation,
+    required this.overlap,
+    required this.word,
+  });
+
   /// The column position where the word starts
+  @override
   final int x;
 
   /// The row position where the word starts
+  @override
   final int y;
 
   /// The orientation the word placed in the puzzle
@@ -16,12 +26,4 @@ class WSLocation implements WSPosition {
 
   /// The word used
   String word;
-
-  WSLocation({
-    required this.x,
-    required this.y,
-    this.orientation,
-    required this.overlap,
-    required this.word,
-  });
 }

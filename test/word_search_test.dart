@@ -5,8 +5,8 @@ import 'package:word_search/word_search.dart';
 
 void main() {
   test('should create error on empty word list', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       [],
       WSSettings(),
     );
@@ -14,8 +14,8 @@ void main() {
     expect(newPuzzle.puzzle, equals(null));
   });
   test('should create new puzzle', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world'],
       WSSettings(
         width: 5,
@@ -26,8 +26,8 @@ void main() {
     expect(newPuzzle.puzzle, isNot(equals(null)));
   });
   test('should create error while trying to fit words in smaller grid', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world', 'random', 'number', 'alexander'],
       WSSettings(
         width: 3,
@@ -48,10 +48,10 @@ void main() {
     expect(newPuzzle.puzzle, equals(null));
   });
   test('should fill empty spaces with custom fill function', () {
-    final randomLetters = [];
-    randomLetters.addAll('!@#\$%^&*()-+/'.split(''));
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final randomLetters = r'!@#$%^&*()-+/'.split('');
+
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world'],
       WSSettings(
         width: 10,
@@ -65,13 +65,13 @@ void main() {
     print(newPuzzle.toString());
   });
   test('should fill empty spaces with custom fill string', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world'],
       WSSettings(
         width: 5,
         height: 5,
-        fillBlanks: '123456789!@#\$%^&*()-+=_{}|/?><',
+        fillBlanks: r'123456789!@#$%^&*()-+=_{}|/?><',
       ),
     );
     expect(newPuzzle.warnings.length, isNot(equals(0)));
@@ -80,8 +80,8 @@ void main() {
   });
 
   test('should return error if all custom fill lettters are used up', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world'],
       WSSettings(
         width: 5,
@@ -95,12 +95,12 @@ void main() {
   });
 
   test('should solve created puzzle', () {
-    final WordSearch wordSearch = WordSearch();
-    final WSNewPuzzle newPuzzle = wordSearch.newPuzzle(
+    final wordSearch = WordSearch();
+    final newPuzzle = wordSearch.newPuzzle(
       ['hello', 'world'],
       WSSettings(),
     );
-    WSSolved solved =
+    final solved =
         wordSearch.solvePuzzle(newPuzzle.puzzle!, ['hello', 'world', 'test']);
     expect(solved.found.length, equals(2));
     expect(solved.notFound.length, equals(1));
